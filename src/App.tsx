@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useState } from 'react';
 
 function App() {
-  const list = ['enhancers', 'injectors'];
+  const list = ['enhancers', 'injectors', 'combine'];
   const [cur, setCur] = useState(list[0]);
   function goToDemo(c: string) {
     setCur(c);
   }
-  let Comp = lazy(() => import(`./components/${cur}`));
+  let Comp = lazy(() => import(`./container/${cur}`));
   return (
     <div>
       <ul>
