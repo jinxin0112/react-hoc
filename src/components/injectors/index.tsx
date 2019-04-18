@@ -1,8 +1,13 @@
 import React from 'react';
 import makeCounter, { InjectedCounterProps } from './makeCounter';
-const Counter = (props: InjectedCounterProps) => {
+
+interface CounterProps extends InjectedCounterProps {
+  style?: React.CSSProperties;
+}
+
+const Counter = (props: CounterProps) => {
   return (
-    <div>
+    <div style={props.style}>
       <button onClick={props.onIncrement}>+</button>
       <span>{props.value}</span>
       <button onClick={props.onDecrement}>-</button>
@@ -11,5 +16,6 @@ const Counter = (props: InjectedCounterProps) => {
 };
 
 export default function() {
-  return makeCounter(Counter);
+  const RealCounter = makeCounter(Counter);
+  return <RealCounter style={{ color: 'red' }} />;
 }

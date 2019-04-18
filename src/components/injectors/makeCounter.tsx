@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Subtract } from 'utility-types';
 export interface InjectedCounterProps {
   value: number;
   onIncrement(): void;
@@ -9,17 +9,19 @@ export interface InjectedCounterProps {
 const makeCounter = <P extends InjectedCounterProps>(
   Component: React.ComponentType<P>
 ) => {
-  const [value, setValue] = useState(0);
-  const props:InjectedCounterProps = {
-    value,
-    onIncrement() {
-      setValue(pre => pre + 1);
-    },
-    onDecrement() {
-      setValue(pre => pre - 1);
-    }
+  return (props: Subtract<P, InjectedCounterProps>) => {
+    const [value, setValue] = useState(0);
+    const counterProps: InjectedCounterProps = {
+      value,
+      onIncrement() {
+        setValue(pre => pre + 1);
+      },
+      onDecrement() {
+        setValue(pre => pre - 1);
+      }
+    };
+    return <Component {...counterProps as P} {...props} />;
   };
-  return <Component {...props as P} />;
 };
 
 export default makeCounter;
