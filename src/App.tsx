@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useState } from 'react';
 
 function App() {
-  const list = ['enhancers', 'injectors', 'combine', 'todo'];
+  const list: string[] = ['enhancers', 'injectors', 'combine', 'todo'];
   const [cur, setCur] = useState(list[0]);
-  function goToDemo(c: string) {
-    setCur(c);
-  }
-  let Comp = lazy(() => import(`./container/${cur}`));
+
+  let Comp: React.LazyExoticComponent<React.ComponentType<any>> = lazy(() =>
+    import(`./container/${cur}`)
+  );
   return (
     <div>
       <ul>
@@ -14,7 +14,7 @@ function App() {
           return (
             <li
               onClick={() => {
-                goToDemo(i);
+                setCur(i);
               }}
               key={idx}
             >
