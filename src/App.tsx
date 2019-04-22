@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react';
 
 function App() {
-  const list = ['enhancers', 'injectors', 'combine'];
+  const list = ['enhancers', 'injectors', 'combine', 'todo'];
   const [cur, setCur] = useState(list[0]);
   function goToDemo(c: string) {
     setCur(c);
