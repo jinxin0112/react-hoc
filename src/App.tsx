@@ -1,7 +1,8 @@
 import React, { lazy, Suspense, useState } from 'react';
+import 'antd/dist/antd.css';
 
 function App() {
-  const list: string[] = ['enhancers', 'injectors', 'combine', 'todo'];
+  const list: string[] = ['enhancers', 'injectors', 'combine', 'todo','upload'];
   const [cur, setCur] = useState(list[0]);
 
   let Comp: React.LazyExoticComponent<React.ComponentType<any>> = lazy(() =>
