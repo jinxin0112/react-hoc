@@ -1,4 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react';
+import {StandardUpload} from './container/upload';
 import 'antd/dist/antd.css';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
         <Suspense fallback={<div>loading...</div>}>
           <Comp />
         </Suspense>
+      </div>
+      <div>
+        <StandardUpload action={''}></StandardUpload>
       </div>
     </div>
   );
